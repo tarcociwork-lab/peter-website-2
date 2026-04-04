@@ -1,6 +1,5 @@
 "use client"
 
-import { motion } from "framer-motion"
 import Link from "next/link"
 import { Header } from "@/components/Header"
 import { Footer } from "@/components/Footer"
@@ -10,7 +9,6 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { FieldGroup, Field, FieldLabel } from "@/components/ui/field"
-import { fadeInUp, staggerContainer, staggerItem } from "@/lib/animations"
 import {
   ArrowLeft,
   Mail,
@@ -72,11 +70,7 @@ export default function ContactPage() {
         {/* Hero Section */}
         <section className="py-16 md:py-24 bg-surface">
           <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-            >
+            <div className="animate-fade-in-up">
               {/* Back Link */}
               <Link
                 href="/"
@@ -100,7 +94,7 @@ export default function ContactPage() {
                   within 24 hours.
                 </p>
               </div>
-            </motion.div>
+            </div>
           </div>
         </section>
 
@@ -109,11 +103,7 @@ export default function ContactPage() {
           <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
               {/* Contact Form */}
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-              >
+              <div className="animate-fade-in-up" style={{ animationDelay: "0.1s" }}>
                 <GlassCard padding="lg">
                   <h2 className="text-2xl font-bold text-foreground mb-2">
                     Send a Message
@@ -181,17 +171,12 @@ export default function ContactPage() {
                     </Button>
                   </form>
                 </GlassCard>
-              </motion.div>
+              </div>
 
               {/* Contact Info */}
-              <motion.div
-                variants={staggerContainer}
-                initial="hidden"
-                animate="visible"
-                className="flex flex-col gap-6"
-              >
+              <div className="flex flex-col gap-6">
                 {/* Contact Details */}
-                <motion.div variants={staggerItem}>
+                <div className="animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
                   <GlassCard padding="lg">
                     <h2 className="text-xl font-bold text-foreground mb-6">
                       Contact Information
@@ -223,10 +208,10 @@ export default function ContactPage() {
                       ))}
                     </div>
                   </GlassCard>
-                </motion.div>
+                </div>
 
                 {/* Social Links */}
-                <motion.div variants={staggerItem}>
+                <div className="animate-fade-in-up" style={{ animationDelay: "0.3s" }}>
                   <GlassCard padding="lg">
                     <h2 className="text-xl font-bold text-foreground mb-4">
                       Follow Marcus
@@ -247,10 +232,10 @@ export default function ContactPage() {
                       ))}
                     </div>
                   </GlassCard>
-                </motion.div>
+                </div>
 
                 {/* Quick CTA */}
-                <motion.div variants={staggerItem}>
+                <div className="animate-fade-in-up" style={{ animationDelay: "0.4s" }}>
                   <GlassCard padding="lg" className="bg-primary/5 border-primary/20">
                     <h2 className="text-xl font-bold text-foreground mb-2">
                       Ready to Start?
@@ -266,8 +251,8 @@ export default function ContactPage() {
                       Apply for the Program
                     </Button>
                   </GlassCard>
-                </motion.div>
-              </motion.div>
+                </div>
+              </div>
             </div>
           </div>
         </section>
