@@ -258,7 +258,7 @@ export default function ContactPage() {
         </section>
       </main>
 
-      <Footer />
+      <Footer onOpenModal={() => setIsModalOpen(true)} />
 
       <CTAModal open={isModalOpen} onOpenChange={setIsModalOpen} />
     </>

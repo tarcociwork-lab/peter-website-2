@@ -31,7 +31,7 @@ export default function HomePage() {
         <FinalCTA onOpenModal={openModal} />
       </main>
 
-      <Footer />
+      <Footer onOpenModal={openModal} />
 
       <CTAModal open={isModalOpen} onOpenChange={setIsModalOpen} />
     </>
