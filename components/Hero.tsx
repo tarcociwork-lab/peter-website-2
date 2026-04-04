@@ -133,15 +133,7 @@ export function Hero({ onOpenModal }: HeroProps) {
               {/* Glow effect behind image */}
               <div className="absolute -inset-4 bg-primary/20 blur-3xl rounded-full opacity-30" />
               
-              <div className="relative h-full w-full rounded-2xl overflow-hidden border border-border">
-                <Image
-                  src="/images/hero-marcus.jpg"
-                  alt="Marcus Thorne - Premium Coach"
-                  fill
-                  className="object-cover"
-                  priority
-                />
-              </div>
+              <div className="relative h-full w-full rounded-2xl overflow-hidden border border-border" />
 
               {/* Floating Stats Card */}
               <div
