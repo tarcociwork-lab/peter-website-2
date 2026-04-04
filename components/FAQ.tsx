@@ -1,13 +1,12 @@
 "use client"
 
-import { motion } from "framer-motion"
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion"
-import { scrollViewport } from "@/lib/animations"
+import { useScrollAnimation } from "@/hooks/use-scroll-animation"
 
 const faqs = [
   {
@@ -43,16 +42,17 @@ const faqs = [
 ]
 
 export function FAQ() {
+  const { ref, isVisible } = useScrollAnimation()
+
   return (
     <section id="faq" className="py-20 md:py-28 bg-background">
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={scrollViewport}
-          transition={{ duration: 0.6 }}
-          className="text-center max-w-3xl mx-auto mb-16"
+        <div
+          ref={ref}
+          className={`text-center max-w-3xl mx-auto mb-16 transition-all duration-700 ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          }`}
         >
           <span className="text-primary text-sm font-semibold uppercase tracking-wider">
             FAQ
@@ -64,15 +64,14 @@ export function FAQ() {
           <p className="mt-4 text-lg text-muted-foreground leading-relaxed">
             Everything you need to know about the program before getting started.
           </p>
-        </motion.div>
+        </div>
 
         {/* FAQ Accordion */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={scrollViewport}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="max-w-3xl mx-auto"
+        <div
+          className={`max-w-3xl mx-auto transition-all duration-700 ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          }`}
+          style={{ transitionDelay: '200ms' }}
         >
           <div className="glass-card rounded-2xl p-6 md:p-8">
             <Accordion type="single" collapsible className="w-full">
@@ -92,7 +91,7 @@ export function FAQ() {
               ))}
             </Accordion>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   )

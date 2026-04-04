@@ -1,9 +1,8 @@
 "use client"
 
-import { motion } from "framer-motion"
 import Image from "next/image"
 import { GlassCard } from "@/components/GlassCard"
-import { staggerContainer, staggerItem, scrollViewport } from "@/lib/animations"
+import { useScrollAnimation } from "@/hooks/use-scroll-animation"
 import { Quote } from "lucide-react"
 
 const testimonials = [
@@ -13,7 +12,7 @@ const testimonials = [
     image: "/images/testimonial-1.jpg",
     metric: "Lost 35 lbs in 12 weeks",
     quote:
-      "Marcus completely transformed how I approach fitness. As a CEO, I needed efficient, effective workouts. He delivered beyond my expectations. I&apos;m in the best shape of my life at 48.",
+      "Marcus completely transformed how I approach fitness. As a CEO, I needed efficient, effective workouts. He delivered beyond my expectations. I'm in the best shape of my life at 48.",
   },
   {
     name: "Sarah Chen",
@@ -21,7 +20,7 @@ const testimonials = [
     image: "/images/testimonial-2.jpg",
     metric: "Increased energy by 200%",
     quote:
-      "The mental performance techniques alone were worth the investment. I&apos;m more focused, more productive, and I finally have the energy to be present with my family after work.",
+      "The mental performance techniques alone were worth the investment. I'm more focused, more productive, and I finally have the energy to be present with my family after work.",
   },
   {
     name: "Michael Torres",
@@ -29,21 +28,22 @@ const testimonials = [
     image: "/images/testimonial-3.jpg",
     metric: "Ran first marathon at 52",
     quote:
-      "I went from barely being able to run a mile to completing a marathon. Marcus&apos;s holistic approach changed everything - my diet, my sleep, my mindset. This is a life transformation.",
+      "I went from barely being able to run a mile to completing a marathon. Marcus's holistic approach changed everything - my diet, my sleep, my mindset. This is a life transformation.",
   },
 ]
 
 export function Testimonials() {
+  const { ref, isVisible } = useScrollAnimation()
+
   return (
     <section id="testimonials" className="py-20 md:py-28 bg-background">
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={scrollViewport}
-          transition={{ duration: 0.6 }}
-          className="text-center max-w-3xl mx-auto mb-16"
+        <div
+          ref={ref}
+          className={`text-center max-w-3xl mx-auto mb-16 transition-all duration-700 ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          }`}
         >
           <span className="text-primary text-sm font-semibold uppercase tracking-wider">
             Success Stories
@@ -56,18 +56,18 @@ export function Testimonials() {
             Hear from high-performing professionals who have transformed 
             their health with Marcus&apos;s coaching program.
           </p>
-        </motion.div>
+        </div>
 
         {/* Testimonials Grid */}
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={scrollViewport}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-        >
-          {testimonials.map((testimonial) => (
-            <motion.div key={testimonial.name} variants={staggerItem}>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {testimonials.map((testimonial, index) => (
+            <div
+              key={testimonial.name}
+              className={`transition-all duration-700 ${
+                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+              }`}
+              style={{ transitionDelay: `${(index + 1) * 150}ms` }}
+            >
               <GlassCard className="h-full" padding="lg">
                 <div className="flex flex-col h-full">
                   {/* Quote Icon */}
@@ -107,9 +107,9 @@ export function Testimonials() {
                   </div>
                 </div>
               </GlassCard>
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   )

@@ -1,8 +1,7 @@
 "use client"
 
-import { motion } from "framer-motion"
 import { GlassCard } from "@/components/GlassCard"
-import { staggerContainer, staggerItem, scrollViewport } from "@/lib/animations"
+import { useScrollAnimation } from "@/hooks/use-scroll-animation"
 import {
   Target,
   Dumbbell,
@@ -52,16 +51,17 @@ const benefits = [
 ]
 
 export function Benefits() {
+  const { ref, isVisible } = useScrollAnimation()
+
   return (
     <section id="benefits" className="py-20 md:py-28 bg-surface">
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={scrollViewport}
-          transition={{ duration: 0.6 }}
-          className="text-center max-w-3xl mx-auto mb-16"
+        <div
+          ref={ref}
+          className={`text-center max-w-3xl mx-auto mb-16 transition-all duration-700 ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          }`}
         >
           <span className="text-primary text-sm font-semibold uppercase tracking-wider">
             Why Choose Marcus
@@ -74,18 +74,18 @@ export function Benefits() {
             A comprehensive approach to health and performance that addresses 
             every aspect of your physical and mental well-being.
           </p>
-        </motion.div>
+        </div>
 
         {/* Benefits Grid */}
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={scrollViewport}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-        >
-          {benefits.map((benefit) => (
-            <motion.div key={benefit.title} variants={staggerItem}>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {benefits.map((benefit, index) => (
+            <div
+              key={benefit.title}
+              className={`transition-all duration-700 ${
+                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+              }`}
+              style={{ transitionDelay: `${(index + 1) * 100}ms` }}
+            >
               <GlassCard className="h-full" padding="lg">
                 <div className="flex flex-col h-full">
                   {/* Icon */}
@@ -102,9 +102,9 @@ export function Benefits() {
                   </p>
                 </div>
               </GlassCard>
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   )

@@ -1,9 +1,7 @@
 "use client"
 
-import { motion } from "framer-motion"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
-import { fadeInUp, staggerContainer, staggerItem } from "@/lib/animations"
 import { ArrowRight, Play } from "lucide-react"
 
 interface HeroProps {
@@ -28,14 +26,9 @@ export function Hero({ onOpenModal }: HeroProps) {
       <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Content */}
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            animate="visible"
-            className="text-center lg:text-left"
-          >
+          <div className="text-center lg:text-left">
             {/* Badge */}
-            <motion.div variants={staggerItem}>
+            <div className="animate-fade-in-up opacity-0" style={{ animationDelay: '0.1s', animationFillMode: 'forwards' }}>
               <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium mb-6">
                 <span className="relative flex h-2 w-2">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75" />
@@ -43,33 +36,33 @@ export function Hero({ onOpenModal }: HeroProps) {
                 </span>
                 Now accepting new clients
               </span>
-            </motion.div>
+            </div>
 
             {/* Headline */}
-            <motion.h1 
-              variants={staggerItem}
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-foreground leading-[1.1]"
+            <h1 
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-foreground leading-[1.1] animate-fade-in-up opacity-0"
+              style={{ animationDelay: '0.2s', animationFillMode: 'forwards' }}
             >
               Transform Your{" "}
               <span className="text-gradient">Health.</span>
               <br />
               Transform Your{" "}
               <span className="text-gradient">Life.</span>
-            </motion.h1>
+            </h1>
 
             {/* Subheadline */}
-            <motion.p 
-              variants={staggerItem}
-              className="mt-6 text-lg md:text-xl text-muted-foreground max-w-xl mx-auto lg:mx-0 leading-relaxed"
+            <p 
+              className="mt-6 text-lg md:text-xl text-muted-foreground max-w-xl mx-auto lg:mx-0 leading-relaxed animate-fade-in-up opacity-0"
+              style={{ animationDelay: '0.3s', animationFillMode: 'forwards' }}
             >
               Join 150+ high performers who have unlocked their full potential 
               through personalized coaching with Marcus &quot;The Catalyst&quot; Thorne.
-            </motion.p>
+            </p>
 
             {/* CTAs */}
-            <motion.div 
-              variants={staggerItem}
-              className="mt-8 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
+            <div 
+              className="mt-8 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start animate-fade-in-up opacity-0"
+              style={{ animationDelay: '0.4s', animationFillMode: 'forwards' }}
             >
               <Button
                 onClick={onOpenModal}
@@ -87,12 +80,12 @@ export function Hero({ onOpenModal }: HeroProps) {
                 <Play className="mr-2 h-5 w-5" />
                 Watch Success Stories
               </Button>
-            </motion.div>
+            </div>
 
             {/* Social Proof */}
-            <motion.div 
-              variants={staggerItem}
-              className="mt-10 flex flex-col sm:flex-row items-center gap-6 justify-center lg:justify-start"
+            <div 
+              className="mt-10 flex flex-col sm:flex-row items-center gap-6 justify-center lg:justify-start animate-fade-in-up opacity-0"
+              style={{ animationDelay: '0.5s', animationFillMode: 'forwards' }}
             >
               {/* Avatar Stack */}
               <div className="flex -space-x-3">
@@ -128,15 +121,13 @@ export function Hero({ onOpenModal }: HeroProps) {
                   <span className="font-semibold text-foreground">4.9/5</span> from 150+ transformations
                 </p>
               </div>
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
 
           {/* Hero Image */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95, x: 20 }}
-            animate={{ opacity: 1, scale: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="relative"
+          <div
+            className="relative animate-fade-in-up opacity-0"
+            style={{ animationDelay: '0.3s', animationFillMode: 'forwards' }}
           >
             <div className="relative aspect-[4/5] lg:aspect-[3/4] rounded-2xl overflow-hidden">
               {/* Glow effect behind image */}
@@ -153,28 +144,24 @@ export function Hero({ onOpenModal }: HeroProps) {
               </div>
 
               {/* Floating Stats Card */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.8 }}
-                className="absolute -left-4 sm:-left-8 bottom-12 glass-card rounded-xl p-4"
+              <div
+                className="absolute -left-4 sm:-left-8 bottom-12 glass-card rounded-xl p-4 animate-fade-in-up opacity-0"
+                style={{ animationDelay: '0.8s', animationFillMode: 'forwards' }}
               >
                 <p className="text-3xl font-bold text-primary">12</p>
                 <p className="text-sm text-muted-foreground">Week Program</p>
-              </motion.div>
+              </div>
 
               {/* Floating Badge */}
-              <motion.div
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 1 }}
-                className="absolute -right-4 sm:-right-8 top-12 glass-card rounded-xl p-4"
+              <div
+                className="absolute -right-4 sm:-right-8 top-12 glass-card rounded-xl p-4 animate-fade-in-down opacity-0"
+                style={{ animationDelay: '1s', animationFillMode: 'forwards' }}
               >
                 <p className="text-3xl font-bold text-foreground">150+</p>
                 <p className="text-sm text-muted-foreground">Lives Changed</p>
-              </motion.div>
+              </div>
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

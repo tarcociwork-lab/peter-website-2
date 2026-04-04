@@ -1,8 +1,7 @@
 "use client"
 
-import { motion } from "framer-motion"
 import Image from "next/image"
-import { scrollViewport } from "@/lib/animations"
+import { useScrollAnimation } from "@/hooks/use-scroll-animation"
 
 const logos = [
   { name: "Google", src: "/images/logo-google.svg" },
@@ -13,15 +12,16 @@ const logos = [
 ]
 
 export function TrustBar() {
+  const { ref, isVisible } = useScrollAnimation()
+
   return (
     <section className="py-16 md:py-20 bg-surface border-y border-border">
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={scrollViewport}
-          transition={{ duration: 0.6 }}
-          className="text-center"
+        <div
+          ref={ref}
+          className={`text-center transition-all duration-700 ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          }`}
         >
           <p className="text-sm text-muted-foreground uppercase tracking-wider mb-8">
             Trusted by executives from
@@ -29,13 +29,12 @@ export function TrustBar() {
 
           <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12 lg:gap-16">
             {logos.map((logo, index) => (
-              <motion.div
+              <div
                 key={logo.name}
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={scrollViewport}
-                transition={{ duration: 0.4, delay: index * 0.1 }}
-                className="relative h-8 w-24 md:h-10 md:w-32 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
+                className={`relative h-8 w-24 md:h-10 md:w-32 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300 ${
+                  isVisible ? "opacity-60" : "opacity-0"
+                }`}
+                style={{ transitionDelay: `${index * 100}ms` }}
               >
                 <Image
                   src={logo.src}
@@ -43,17 +42,16 @@ export function TrustBar() {
                   fill
                   className="object-contain"
                 />
-              </motion.div>
+              </div>
             ))}
           </div>
 
           {/* Featured In Badge */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={scrollViewport}
-            transition={{ duration: 0.6, delay: 0.5 }}
-            className="mt-10 inline-flex items-center gap-3 px-6 py-3 rounded-full bg-secondary/50 border border-border"
+          <div
+            className={`mt-10 inline-flex items-center gap-3 px-6 py-3 rounded-full bg-secondary/50 border border-border transition-all duration-700 ${
+              isVisible ? "opacity-100" : "opacity-0"
+            }`}
+            style={{ transitionDelay: '500ms' }}
           >
             <span className="text-sm text-muted-foreground">Featured in</span>
             <span className="text-sm font-semibold text-foreground">
@@ -67,8 +65,8 @@ export function TrustBar() {
             <span className="text-sm font-semibold text-foreground">
               GQ
             </span>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
       </div>
     </section>
   )

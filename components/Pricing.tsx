@@ -1,9 +1,8 @@
 "use client"
 
-import { motion } from "framer-motion"
 import { GlassCard } from "@/components/GlassCard"
 import { Button } from "@/components/ui/button"
-import { scrollViewport } from "@/lib/animations"
+import { useScrollAnimation } from "@/hooks/use-scroll-animation"
 import { Check, Shield, Zap } from "lucide-react"
 
 interface PricingProps {
@@ -22,16 +21,17 @@ const features = [
 ]
 
 export function Pricing({ onOpenModal }: PricingProps) {
+  const { ref, isVisible } = useScrollAnimation()
+
   return (
     <section id="pricing" className="py-20 md:py-28 bg-surface">
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={scrollViewport}
-          transition={{ duration: 0.6 }}
-          className="text-center max-w-3xl mx-auto mb-16"
+        <div
+          ref={ref}
+          className={`text-center max-w-3xl mx-auto mb-16 transition-all duration-700 ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          }`}
         >
           <span className="text-primary text-sm font-semibold uppercase tracking-wider">
             Investment
@@ -44,15 +44,14 @@ export function Pricing({ onOpenModal }: PricingProps) {
             A premium coaching experience designed for executives and 
             high-performers who demand results.
           </p>
-        </motion.div>
+        </div>
 
         {/* Pricing Card */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={scrollViewport}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="max-w-2xl mx-auto"
+        <div
+          className={`max-w-2xl mx-auto transition-all duration-700 ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          }`}
+          style={{ transitionDelay: '200ms' }}
         >
           <GlassCard padding="none" className="overflow-hidden">
             {/* Header */}
@@ -110,15 +109,14 @@ export function Pricing({ onOpenModal }: PricingProps) {
               </div>
             </div>
           </GlassCard>
-        </motion.div>
+        </div>
 
         {/* Additional Info */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={scrollViewport}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="mt-12 text-center"
+        <div
+          className={`mt-12 text-center transition-all duration-700 ${
+            isVisible ? "opacity-100" : "opacity-0"
+          }`}
+          style={{ transitionDelay: '400ms' }}
         >
           <p className="text-muted-foreground">
             Have questions?{" "}
@@ -129,7 +127,7 @@ export function Pricing({ onOpenModal }: PricingProps) {
               Contact Marcus directly
             </a>
           </p>
-        </motion.div>
+        </div>
       </div>
     </section>
   )

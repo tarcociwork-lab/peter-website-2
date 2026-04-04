@@ -1,9 +1,8 @@
 "use client"
 
-import { motion } from "framer-motion"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { scrollViewport } from "@/lib/animations"
+import { useScrollAnimation } from "@/hooks/use-scroll-animation"
 import { ArrowRight, MessageCircle } from "lucide-react"
 
 interface FinalCTAProps {
@@ -11,6 +10,8 @@ interface FinalCTAProps {
 }
 
 export function FinalCTA({ onOpenModal }: FinalCTAProps) {
+  const { ref, isVisible } = useScrollAnimation()
+
   return (
     <section className="py-20 md:py-28 bg-surface relative overflow-hidden">
       {/* Background elements */}
@@ -19,12 +20,11 @@ export function FinalCTA({ onOpenModal }: FinalCTAProps) {
       </div>
 
       <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={scrollViewport}
-          transition={{ duration: 0.6 }}
-          className="text-center max-w-3xl mx-auto"
+        <div
+          ref={ref}
+          className={`text-center max-w-3xl mx-auto transition-all duration-700 ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          }`}
         >
           {/* Badge */}
           <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium mb-8">
@@ -69,12 +69,11 @@ export function FinalCTA({ onOpenModal }: FinalCTAProps) {
           </div>
 
           {/* Trust Indicators */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={scrollViewport}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="mt-12 flex flex-wrap items-center justify-center gap-6 md:gap-10 text-sm text-muted-foreground"
+          <div
+            className={`mt-12 flex flex-wrap items-center justify-center gap-6 md:gap-10 text-sm text-muted-foreground transition-all duration-700 ${
+              isVisible ? "opacity-100" : "opacity-0"
+            }`}
+            style={{ transitionDelay: '300ms' }}
           >
             <div className="flex items-center gap-2">
               <div className="w-2 h-2 rounded-full bg-primary" />
@@ -88,8 +87,8 @@ export function FinalCTA({ onOpenModal }: FinalCTAProps) {
               <div className="w-2 h-2 rounded-full bg-primary" />
               <span>24/7 Support</span>
             </div>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
       </div>
     </section>
   )
