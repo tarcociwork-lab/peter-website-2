@@ -5,16 +5,16 @@ import { Button } from "@/components/ui/button"
 import { useScrollAnimation } from "@/hooks/use-scroll-animation"
 import { ArrowRight, MessageCircle } from "lucide-react"
 
-interface FinalCTAProps {
+interface CTABannerProps {
   onOpenModal: () => void
 }
 
-export function FinalCTA({ onOpenModal }: FinalCTAProps) {
+export function CTABanner({ onOpenModal }: CTABannerProps) {
   const { ref, isVisible } = useScrollAnimation()
 
   return (
     <section className="py-20 md:py-28 bg-surface relative overflow-hidden">
-      {/* Background elements */}
+      {/* Background glow */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-3xl" />
       </div>
@@ -68,7 +68,7 @@ export function FinalCTA({ onOpenModal }: FinalCTAProps) {
             className={`mt-12 flex flex-wrap items-center justify-center gap-6 md:gap-10 text-sm text-muted-foreground transition-all duration-700 ${
               isVisible ? "opacity-100" : "opacity-0"
             }`}
-            style={{ transitionDelay: '300ms' }}
+            style={{ transitionDelay: "300ms" }}
           >
             <div className="flex items-center gap-2">
               <div className="w-2 h-2 rounded-full bg-primary" />

@@ -5,6 +5,7 @@ import { Header } from "@/components/Header"
 import { Footer } from "@/components/Footer"
 import { CTAModal } from "@/components/CTAModal"
 import { GlassCard } from "@/components/GlassCard"
+import { CTABanner } from "@/components/CTABanner"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
@@ -256,6 +257,9 @@ export default function ContactPage() {
             </div>
           </div>
         </section>
+
+        {/* CTA Banner */}
+        <CTABanner onOpenModal={() => setIsModalOpen(true)} />
       </main>
 
       <Footer onOpenModal={() => setIsModalOpen(true)} />
