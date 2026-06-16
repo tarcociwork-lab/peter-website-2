@@ -10,10 +10,10 @@ const outfit = Outfit({
   weight: ["300", "400", "500", "600", "700", "800", "900"],
 });
 
-const defaultUrl = process.env.VERCEL_URL 
-  ? `https://${process.env.VERCEL_URL}` 
-  : process.env.NEXT_PUBLIC_SITE_URL 
-    ? process.env.NEXT_PUBLIC_SITE_URL 
+const defaultUrl = process.env.VERCEL_URL
+  ? `https://${process.env.VERCEL_URL}`
+  : process.env.NEXT_PUBLIC_SITE_URL
+    ? process.env.NEXT_PUBLIC_SITE_URL
     : 'http://localhost:3000';
 
 export const metadata: Metadata = {
