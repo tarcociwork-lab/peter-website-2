@@ -35,13 +35,13 @@ export function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(0)
 
   return (
-    <section className="py-24 px-4 bg-background relative border-y border-border">
+    <section className="py-32 md:py-48 px-4 bg-background relative border-y border-border">
       <div className="max-w-3xl mx-auto">
         <motion.h2 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-3xl md:text-5xl font-extrabold tracking-tight text-center mb-16"
+          className="text-4xl md:text-6xl font-extrabold tracking-tight text-center mb-24"
         >
           FREQUENTLY ASKED <span className="text-gradient">QUESTIONS</span>
         </motion.h2>

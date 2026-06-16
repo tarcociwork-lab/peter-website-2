@@ -138,11 +138,18 @@
 }
 
 /* Text gradient utility */
+/* Text gradient utility with subtle glow */
 .text-gradient {
   background: linear-gradient(135deg, #A855F7 0%, #8B5CF6 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  filter: drop-shadow(0 0 12px rgba(168, 85, 247, 0.45));
+}
+
+/* Subtle glow for standard primary text */
+.text-primary {
+  text-shadow: 0 0 12px rgba(139, 92, 246, 0.45);
 }
 
 /* Glow effect for buttons */

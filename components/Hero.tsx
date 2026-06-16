@@ -6,7 +6,7 @@ import Image from "next/image"
 
 export function Hero() {
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center pt-32 pb-20 px-4 overflow-hidden">
+    <section className="relative min-h-screen flex flex-col items-center justify-center pt-40 pb-32 md:pb-48 px-4 overflow-hidden">
       {/* Animated Background Gradients */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <motion.div 
@@ -44,7 +44,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 leading-tight"
+          className="text-5xl md:text-7xl font-extrabold tracking-tight mb-8 leading-tight"
         >
           STOP POSTING FOR FREE.<br />
           <span className="text-gradient">START GETTING PAID</span><br />
@@ -55,7 +55,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="text-lg md:text-xl text-muted-foreground max-w-2xl mb-12 leading-relaxed"
+          className="text-lg md:text-xl text-muted-foreground max-w-2xl mb-16 leading-relaxed"
         >
           Learn the exact UGC system that helps creators land brand deals, build portfolios, and create a reliable income stream.
         </motion.p>
