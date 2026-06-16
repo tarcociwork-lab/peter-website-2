@@ -1,89 +1,66 @@
 "use client"
 
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { useScrollAnimation } from "@/hooks/use-scroll-animation"
-import { ArrowRight, MessageCircle } from "lucide-react"
+import { motion } from "framer-motion"
+import { CheckCircle2, ArrowRight } from "lucide-react"
 
-interface FinalCTAProps {
-  onOpenModal: () => void
-}
-
-export function FinalCTA({ onOpenModal }: FinalCTAProps) {
-  const { ref, isVisible } = useScrollAnimation()
-
+export function FinalCTA() {
   return (
-    <section className="py-20 md:py-28 bg-surface relative overflow-hidden">
-      {/* Background elements */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-3xl" />
-      </div>
+    <section className="py-32 px-4 relative overflow-hidden flex flex-col items-center justify-center border-t border-border">
+      {/* Background Glow */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#1f29370a_1px,transparent_1px),linear-gradient(to_bottom,#1f29370a_1px,transparent_1px)] bg-[size:4rem_4rem] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-2xl h-[400px] bg-primary/20 blur-[120px] pointer-events-none rounded-full" />
 
-      <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div
-          ref={ref}
-          className={`text-center max-w-3xl mx-auto transition-all duration-700 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
+      <div className="relative z-10 max-w-4xl mx-auto text-center space-y-8">
+        <motion.h2 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-4xl md:text-6xl font-extrabold tracking-tight leading-tight"
         >
-          {/* Headline */}
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-foreground tracking-tight leading-tight">
-            Ready to Become{" "}
-            <span className="text-gradient">The Catalyst</span>
-            <br />
-            of Your Own Transformation?
-          </h2>
+          YOUR FIRST PAID BRAND DEAL COULD BE <br className="hidden md:block" />
+          <span className="text-gradient">ONE DECISION AWAY.</span>
+        </motion.h2>
 
-          {/* Description */}
-          <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            Stop waiting for the perfect moment. The best investment you&apos;ll 
-            ever make is in yourself. Take the first step today.
-          </p>
+        <motion.p 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.1 }}
+          className="text-xl text-muted-foreground max-w-2xl mx-auto"
+        >
+          Book a free strategy call and we&apos;ll show you exactly how to start building your UGC business today.
+        </motion.p>
 
-          {/* CTAs */}
-          <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
-            <Button
-              onClick={onOpenModal}
-              size="lg"
-              className="bg-primary text-primary-foreground hover:bg-primary/90 glow-lime font-semibold h-14 px-8 text-base"
-            >
-              Schedule Your Consultation
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
-            <Button
-              asChild
-              variant="outline"
-              size="lg"
-              className="border-border text-foreground hover:bg-secondary h-14 px-8 text-base"
-            >
-              <Link href="/contact">
-                <MessageCircle className="mr-2 h-5 w-5" />
-                Contact Marcus
-              </Link>
-            </Button>
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2 }}
+          className="pt-8 flex flex-col items-center"
+        >
+          <button className="group relative inline-flex items-center justify-center gap-3 px-10 py-5 text-xl font-bold text-white bg-primary rounded-full overflow-hidden glow-purple w-full sm:w-auto">
+            <div className="absolute inset-0 bg-gradient-to-r from-primary to-accent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            <span className="relative z-10 flex items-center gap-2">
+              BOOK YOUR STRATEGY CALL
+              <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
+            </span>
+          </button>
+          
+          <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-8 mt-8 text-sm text-muted-foreground font-medium">
+            <span className="flex items-center gap-2">
+              <CheckCircle2 className="w-4 h-4 text-primary" />
+              Free consultation
+            </span>
+            <span className="flex items-center gap-2">
+              <CheckCircle2 className="w-4 h-4 text-primary" />
+              Personalized roadmap
+            </span>
+            <span className="flex items-center gap-2">
+              <CheckCircle2 className="w-4 h-4 text-primary" />
+              No obligation
+            </span>
           </div>
-
-          {/* Trust Indicators */}
-          <div
-            className={`mt-12 flex flex-wrap items-center justify-center gap-6 md:gap-10 text-sm text-muted-foreground transition-all duration-700 ${
-              isVisible ? "opacity-100" : "opacity-0"
-            }`}
-            style={{ transitionDelay: '300ms' }}
-          >
-            <div className="flex items-center gap-2">
-              <div className="w-2 h-2 rounded-full bg-primary" />
-              <span>150+ Transformations</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="w-2 h-2 rounded-full bg-primary" />
-              <span>30-Day Guarantee</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="w-2 h-2 rounded-full bg-primary" />
-              <span>24/7 Support</span>
-            </div>
-          </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   )

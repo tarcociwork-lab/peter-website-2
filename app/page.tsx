@@ -1,39 +1,31 @@
 "use client"
 
-import { useState } from "react"
-import { Header } from "@/components/Header"
 import { Hero } from "@/components/Hero"
-import { Benefits } from "@/components/Benefits"
-import { Testimonials } from "@/components/Testimonials"
-import { TrustBar } from "@/components/TrustBar"
-import { Pricing } from "@/components/Pricing"
+import { ProblemAgitation } from "@/components/ProblemAgitation"
+import { SocialProof } from "@/components/SocialProof"
+import { WhatYouGet } from "@/components/WhatYouGet"
+import { Roadmap } from "@/components/Roadmap"
+import { CoachIntro } from "@/components/CoachIntro"
+import { TestimonialWall } from "@/components/TestimonialWall"
 import { FAQ } from "@/components/FAQ"
 import { FinalCTA } from "@/components/FinalCTA"
-import { Footer } from "@/components/Footer"
-import { CTAModal } from "@/components/CTAModal"
+import { Booking } from "@/components/Booking"
 
 export default function HomePage() {
-  const [isModalOpen, setIsModalOpen] = useState(false)
-
-  const openModal = () => setIsModalOpen(true)
-
   return (
-    <>
-      <Header onOpenModal={openModal} />
-      
+    <div className="bg-background min-h-screen text-foreground overflow-x-hidden selection:bg-primary/30 selection:text-primary">
       <main>
-        <Hero onOpenModal={openModal} />
-        <Benefits />
-        <Testimonials />
-        <TrustBar />
-        <Pricing onOpenModal={openModal} />
+        <Hero />
+        <ProblemAgitation />
+        <SocialProof />
+        <WhatYouGet />
+        <Roadmap />
+        <CoachIntro />
+        <TestimonialWall />
         <FAQ />
-        <FinalCTA onOpenModal={openModal} />
+        <FinalCTA />
+        <Booking />
       </main>
-
-      <Footer onOpenModal={openModal} />
-
-      <CTAModal open={isModalOpen} onOpenChange={setIsModalOpen} />
-    </>
+    </div>
   )
 }

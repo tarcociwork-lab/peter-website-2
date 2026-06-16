@@ -1,91 +1,105 @@
 "use client"
 
-import { Button } from "@/components/ui/button"
+import { motion } from "framer-motion"
+import { Play, ArrowRight } from "lucide-react"
+import Image from "next/image"
 
-interface HeroProps {
-  onOpenModal: () => void
-}
-
-export function Hero({ onOpenModal }: HeroProps) {
+export function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 bg-background pointer-events-none" />
-      
-      {/* Center glow effect */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-primary/20 blur-[120px] rounded-full opacity-40 pointer-events-none" />
+    <section className="relative min-h-screen flex flex-col items-center justify-center pt-32 pb-20 px-4 overflow-hidden">
+      {/* Animated Background Gradients */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <motion.div 
+          animate={{ 
+            scale: [1, 1.2, 1],
+            opacity: [0.3, 0.5, 0.3],
+          }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute -top-[20%] -left-[10%] w-[60%] h-[60%] rounded-full bg-primary/20 blur-[120px]" 
+        />
+        <motion.div 
+          animate={{ 
+            scale: [1, 1.3, 1],
+            opacity: [0.2, 0.4, 0.2],
+          }}
+          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+          className="absolute top-[40%] -right-[10%] w-[50%] h-[50%] rounded-full bg-accent/20 blur-[120px]" 
+        />
+      </div>
 
-      <div className="relative w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 text-center">
+      <div className="relative z-10 w-full max-w-5xl mx-auto flex flex-col items-center text-center">
         {/* Badge */}
-        <div className="animate-fade-in-up opacity-0" style={{ animationDelay: '0.1s', animationFillMode: 'forwards' }}>
-          <span className="inline-flex items-center px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium mb-8">
-            Limited Spots Available
-          </span>
-        </div>
-
-        {/* Headline */}
-        <h1 
-          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-foreground leading-[1.1] animate-fade-in-up opacity-0"
-          style={{ animationDelay: '0.2s', animationFillMode: 'forwards' }}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/10 backdrop-blur-md mb-8"
         >
-          Build the{" "}
-          <span className="text-primary">Executive Athlete.</span>
-        </h1>
+          <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+          <span className="text-sm font-medium text-primary-foreground tracking-wide uppercase">The #1 UGC Mentorship Program</span>
+        </motion.div>
 
-        {/* Subheadline */}
-        <p 
-          className="mt-6 text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed animate-fade-in-up opacity-0"
-          style={{ animationDelay: '0.3s', animationFillMode: 'forwards' }}
+        {/* Headlines */}
+        <motion.h1 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 leading-tight"
         >
-          A 12-week blueprint for leaders to reclaim peak physical form without the 10-hour gym week.
-        </p>
+          STOP POSTING FOR FREE.<br />
+          <span className="text-gradient">START GETTING PAID</span><br />
+          FOR YOUR CONTENT.
+        </motion.h1>
+
+        <motion.p 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="text-lg md:text-xl text-muted-foreground max-w-2xl mb-12 leading-relaxed"
+        >
+          Learn the exact UGC system that helps creators land brand deals, build portfolios, and create a reliable income stream.
+        </motion.p>
+
+        {/* Video Placeholder */}
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.7, delay: 0.3 }}
+          className="relative w-full aspect-video max-w-4xl rounded-2xl overflow-hidden glass-card group cursor-pointer mb-12"
+        >
+          <Image 
+            src="/images/hero-video.png" 
+            alt="UGC System Video" 
+            fill 
+            className="object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500"
+            priority
+          />
+          <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors duration-500 flex items-center justify-center">
+            <div className="w-20 h-20 rounded-full bg-primary/80 backdrop-blur-md flex items-center justify-center text-white glow-purple transform group-hover:scale-110 transition-transform duration-300">
+              <Play className="w-8 h-8 ml-1" fill="currentColor" />
+            </div>
+          </div>
+        </motion.div>
 
         {/* CTA */}
-        <div 
-          className="mt-10 animate-fade-in-up opacity-0"
-          style={{ animationDelay: '0.4s', animationFillMode: 'forwards' }}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+          className="flex flex-col items-center"
         >
-          <Button
-            onClick={onOpenModal}
-            size="lg"
-            className="bg-primary text-primary-foreground hover:bg-primary/90 glow-lime font-semibold h-14 px-10 text-base rounded-lg"
-          >
-            Start Your Transformation
-          </Button>
-        </div>
+          <button className="group relative inline-flex items-center justify-center gap-3 px-8 py-4 text-lg font-bold text-white bg-primary rounded-full overflow-hidden glow-purple w-full sm:w-auto">
+            <div className="absolute inset-0 bg-gradient-to-r from-primary to-accent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            <span className="relative z-10 flex items-center gap-2">
+              BOOK YOUR STRATEGY CALL
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </span>
+          </button>
+          <p className="mt-4 text-sm text-muted-foreground">
+            ⚡️ Limited mentorship spots available this month.
+          </p>
+        </motion.div>
 
-        {/* Stats Row */}
-        <div 
-          className="mt-16 flex flex-wrap justify-center gap-12 md:gap-20 animate-fade-in-up opacity-0"
-          style={{ animationDelay: '0.5s', animationFillMode: 'forwards' }}
-        >
-          <div className="text-center">
-            <p className="text-4xl md:text-5xl font-bold text-primary">150+</p>
-            <p className="text-sm text-muted-foreground mt-1">Executives Transformed</p>
-          </div>
-          <div className="text-center">
-            <p className="text-4xl md:text-5xl font-bold text-foreground">4hrs</p>
-            <p className="text-sm text-muted-foreground mt-1">Per Week Required</p>
-          </div>
-          <div className="text-center">
-            <p className="text-4xl md:text-5xl font-bold text-foreground">12</p>
-            <p className="text-sm text-muted-foreground mt-1">Week Program</p>
-          </div>
-        </div>
-
-        {/* Trusted By Section */}
-        <div 
-          className="mt-20 animate-fade-in-up opacity-0"
-          style={{ animationDelay: '0.6s', animationFillMode: 'forwards' }}
-        >
-          <p className="text-sm text-muted-foreground mb-6">Trusted by leaders featured in</p>
-          <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12">
-            <span className="text-xl md:text-2xl font-bold text-muted-foreground/60 hover:text-muted-foreground transition-colors">MH</span>
-            <span className="text-xl md:text-2xl font-bold text-muted-foreground/60 hover:text-muted-foreground transition-colors tracking-wide">FORBES</span>
-            <span className="text-xl md:text-2xl font-bold text-muted-foreground/60 hover:text-muted-foreground transition-colors tracking-wider">BLOOMBERG</span>
-            <span className="text-xl md:text-2xl font-bold text-muted-foreground/60 hover:text-muted-foreground transition-colors">TC</span>
-          </div>
-        </div>
       </div>
     </section>
   )
