@@ -4,7 +4,7 @@ import { motion } from "framer-motion"
 
 export function Booking() {
   return (
-    <section className="py-32 md:py-48 px-4 bg-background relative border-t border-border" id="booking">
+    <section className="py-24 md:py-36 px-4 relative" id="booking">
       <div className="max-w-4xl mx-auto">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
@@ -15,7 +15,7 @@ export function Booking() {
           <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-accent to-primary" />
           
           <div className="text-center mb-8 space-y-4 pt-4">
-            <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight text-foreground">BOOK YOUR <span className="text-gradient">STRATEGY CALL</span></h2>
+            <h2 className="font-display text-3xl md:text-5xl font-extrabold tracking-tight text-foreground uppercase">BOOK YOUR <span className="text-gradient text-glow font-extrabold">STRATEGY CALL</span></h2>
             <p className="text-lg text-muted-foreground">Select a time below to secure your spot. Spots are strictly limited.</p>
           </div>
 

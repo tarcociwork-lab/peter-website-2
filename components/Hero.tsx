@@ -6,26 +6,8 @@ import Image from "next/image"
 
 export function Hero() {
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center pt-40 pb-32 md:pb-48 px-4 overflow-hidden">
-      {/* Animated Background Gradients */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <motion.div 
-          animate={{ 
-            scale: [1, 1.2, 1],
-            opacity: [0.3, 0.5, 0.3],
-          }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute -top-[20%] -left-[10%] w-[60%] h-[60%] rounded-full bg-primary/20 blur-[120px]" 
-        />
-        <motion.div 
-          animate={{ 
-            scale: [1, 1.3, 1],
-            opacity: [0.2, 0.4, 0.2],
-          }}
-          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-          className="absolute top-[40%] -right-[10%] w-[50%] h-[50%] rounded-full bg-accent/20 blur-[120px]" 
-        />
-      </div>
+    <section className="relative min-h-screen flex flex-col items-center justify-center pt-20 pb-24 md:pb-36 px-4 overflow-hidden">
+
 
       <div className="relative z-10 w-full max-w-5xl mx-auto flex flex-col items-center text-center">
         {/* Badge */}
@@ -33,39 +15,43 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/10 backdrop-blur-md mb-8"
+          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/30 bg-primary/10 backdrop-blur-md mb-4"
         >
           <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-          <span className="text-sm font-medium text-primary-foreground tracking-wide uppercase">The #1 UGC Mentorship Program</span>
+          <span className="text-xs font-medium text-primary-foreground tracking-wide uppercase">The #1 UGC Mentorship Program</span>
         </motion.div>
 
-        {/* Headlines */}
+        {/* Headline */}
         <motion.h1 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="text-5xl md:text-7xl font-extrabold tracking-tight mb-8 leading-tight"
+          className="font-display text-4xl md:text-6xl font-black tracking-tight mb-3 leading-tight text-white"
         >
-          STOP POSTING FOR FREE.<br />
-          <span className="text-gradient">START GETTING PAID</span><br />
+          <span className="text-gradient text-glow font-black">START GETTING PAID</span><br />
           FOR YOUR CONTENT.
         </motion.h1>
 
+        {/* Subheading */}
         <motion.p 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="text-lg md:text-xl text-muted-foreground max-w-2xl mb-16 leading-relaxed"
+          className="text-sm text-muted-foreground max-w-lg mb-5 leading-relaxed"
         >
-          Learn the exact UGC system that helps creators land brand deals, build portfolios, and create a reliable income stream.
+          Do you want to make money online with UGC?{" "}
+          <span className="text-white/90 font-medium">
+            I'll show you the exact steps I used to hit $6K/month in only 2 weeks, working just 2–3 hours a day.
+          </span>
         </motion.p>
 
-        {/* Video Placeholder */}
+        {/* Video */}
         <motion.div 
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.7, delay: 0.3 }}
-          className="relative w-full aspect-video max-w-4xl rounded-2xl overflow-hidden glass-card group cursor-pointer mb-12"
+          className="relative w-full max-w-3xl rounded-2xl overflow-hidden glass-card group cursor-pointer mb-5"
+          style={{ aspectRatio: "16/7" }}
         >
           <Image 
             src="/images/hero-video.png" 
@@ -75,8 +61,8 @@ export function Hero() {
             priority
           />
           <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors duration-500 flex items-center justify-center">
-            <div className="w-20 h-20 rounded-full bg-primary/80 backdrop-blur-md flex items-center justify-center text-white glow-purple transform group-hover:scale-110 transition-transform duration-300">
-              <Play className="w-8 h-8 ml-1" fill="currentColor" />
+            <div className="w-16 h-16 rounded-full bg-primary/80 backdrop-blur-md flex items-center justify-center text-white glow-purple transform group-hover:scale-110 transition-transform duration-300">
+              <Play className="w-6 h-6 ml-1" fill="currentColor" />
             </div>
           </div>
         </motion.div>
@@ -95,7 +81,7 @@ export function Hero() {
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </span>
           </button>
-          <p className="mt-4 text-sm text-muted-foreground">
+          <p className="mt-2 text-xs text-muted-foreground/70">
             ⚡️ Limited mentorship spots available this month.
           </p>
         </motion.div>

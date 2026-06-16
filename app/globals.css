@@ -96,6 +96,7 @@
   --color-sidebar-ring: var(--sidebar-ring);
   --color-surface: var(--surface);
   --color-surface-secondary: var(--surface-secondary);
+  --font-display: var(--font-outfit), sans-serif;
 }
 
 @layer base {
@@ -137,19 +138,22 @@
   box-shadow: 0 10px 30px -10px rgba(139, 92, 246, 0.2);
 }
 
-/* Text gradient utility */
 /* Text gradient utility with subtle glow */
 .text-gradient {
-  background: linear-gradient(135deg, #A855F7 0%, #8B5CF6 100%);
+  background: linear-gradient(135deg, #F472B6 0%, #D8B4FE 30%, #A855F7 70%, #8B5CF6 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  filter: drop-shadow(0 0 12px rgba(168, 85, 247, 0.45));
+  filter: drop-shadow(0 0 6px rgba(168, 85, 247, 0.35));
 }
 
 /* Subtle glow for standard primary text */
+.text-glow {
+  text-shadow: 0 0 8px rgba(139, 92, 246, 0.4);
+}
+
 .text-primary {
-  text-shadow: 0 0 12px rgba(139, 92, 246, 0.45);
+  text-shadow: 0 0 8px rgba(139, 92, 246, 0.3);
 }
 
 /* Glow effect for buttons */

@@ -1,14 +1,18 @@
 import type { Metadata, Viewport } from 'next'
-import { Geist, Geist_Mono } from 'next/font/google'
+import { Geist, Outfit } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 
-const _geist = Geist({ subsets: ["latin"] });
-const _geistMono = Geist_Mono({ subsets: ["latin"] });
+const geist = Geist({ subsets: ["latin"] });
+const outfit = Outfit({
+  subsets: ["latin"],
+  variable: "--font-outfit",
+  weight: ["300", "400", "500", "600", "700", "800", "900"],
+});
 
 export const metadata: Metadata = {
-  title: 'New Web Project',
-  description: 'A brand new web project ready for customization.',
+  title: 'UGC Mentorship',
+  description: 'Premium UGC Mentorship Program.',
 }
 
 export const viewport: Viewport = {
@@ -24,7 +28,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark" data-scroll-behavior="smooth">
-      <body className="font-sans antialiased bg-background text-foreground min-h-screen">
+      <body className={`${geist.className} ${outfit.variable} antialiased bg-background text-foreground min-h-screen`}>
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>

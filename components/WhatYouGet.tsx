@@ -5,15 +5,15 @@ import Image from "next/image"
 
 export function WhatYouGet() {
   return (
-    <section className="py-32 md:py-48 px-4 bg-background relative overflow-hidden border-y border-border">
+    <section className="py-24 md:py-36 px-4 relative overflow-hidden">
       <div className="max-w-6xl mx-auto">
         <motion.h2 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-4xl md:text-6xl font-extrabold tracking-tight text-center mb-24 text-white"
+          className="font-display text-4xl md:text-6xl font-extrabold tracking-tight text-center mb-24 text-white uppercase"
         >
-          What you&apos;ll get at the <span className="border-b-4 border-primary">mentorship</span>:
+          What you&apos;ll get at the <span className="text-gradient text-glow">mentorship</span>:
         </motion.h2>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-12">
@@ -59,9 +59,9 @@ export function WhatYouGet() {
             className="flex flex-col items-center text-center space-y-6"
           >
             <h3 className="text-xl font-bold text-foreground">#3: Tactical Next Steps</h3>
-            <div className="relative w-full aspect-video rounded-2xl overflow-hidden border border-border bg-surface-secondary">
+            <div className="relative w-full aspect-video rounded-2xl overflow-hidden border border-border bg-surface-secondary/20">
               <div className="absolute inset-0 bg-primary/10 flex items-center justify-center">
-                <span className="text-primary font-bold tracking-widest text-lg">1-ON-1 COACHING</span>
+                <span className="text-primary text-glow font-bold tracking-widest text-lg">1-ON-1 COACHING</span>
               </div>
             </div>
             <p className="text-muted-foreground text-sm leading-relaxed px-4">
