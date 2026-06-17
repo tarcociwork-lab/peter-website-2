@@ -6,28 +6,16 @@ import { ChevronDown } from "lucide-react"
 
 const faqs = [
   {
-    q: "Do I need experience?",
-    a: "Not at all. We cover everything from setting up your camera to filming your first piece of content. This is built for absolute beginners as well as intermediate creators."
+    q: "Do I need a lot of followers?",
+    a: "No, starting at 0 followers is actually more desired."
   },
   {
-    q: "Do I need a large following?",
-    a: "No! UGC (User Generated Content) is created for brands to post on THEIR pages, not yours. You can have zero followers and still make thousands a month."
+    q: "I don't have time!",
+    a: "UGC is a skill that can be done with minimal time on the side, and generate huge results."
   },
   {
-    q: "How quickly can I get results?",
-    a: "If you follow the roadmap diligently, you can have your portfolio set up by Week 1 and start pitching by Week 2. Many of our students land their first paid deal within 30 days."
-  },
-  {
-    q: "What equipment do I need?",
-    a: "A modern smartphone (iPhone 11+ or equivalent Android) and natural lighting is all you need to start. We'll show you how to maximize what you already have."
-  },
-  {
-    q: "How much time is required?",
-    a: "We recommend dedicating at least 5-10 hours a week to watch the modules, film content, and run your outreach system."
-  },
-  {
-    q: "Is mentorship right for beginners?",
-    a: "Yes, personalized feedback is exactly what beginners need most to avoid common mistakes and fast-track their success."
+    q: "How expensive is this service?",
+    a: "Price will be discussed on call, if your budget is $0-$500 Dont bother booking! BUT I AM OFFERING a LIMITED 80% off for the next 5 Clients"
   }
 ]
 

@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import Image from "next/image"
+import { DollarSign, MousePointerClick, TrendingUp } from "lucide-react"
 
 export function WhatYouGet() {
   return (
@@ -11,25 +11,45 @@ export function WhatYouGet() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="font-display text-4xl md:text-6xl font-extrabold tracking-tight text-center mb-24 text-white uppercase"
+          className="font-display text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-center mb-24 text-white uppercase"
         >
-          What you&apos;ll get at the <span className="text-gradient text-glow">mentorship</span>:
+          What you will get with <span className="text-gradient text-glow">my coaching</span>
         </motion.h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-12">
+        <div className="relative grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-12">
+          
+          {/* Connecting Line (Desktop) */}
+          <div className="hidden md:block absolute top-[3rem] left-[16%] right-[16%] h-1 bg-primary/20 z-0 overflow-hidden rounded-full">
+            <motion.div 
+              className="h-full w-1/3 bg-primary glow-purple"
+              animate={{ x: ["-100%", "300%"] }}
+              transition={{ repeat: Infinity, duration: 3, ease: "linear" }}
+            />
+          </div>
+
+          {/* Connecting Line (Mobile) */}
+          <div className="block md:hidden absolute top-[3rem] bottom-[3rem] left-1/2 -translate-x-1/2 w-1 bg-primary/20 z-0 overflow-hidden rounded-full">
+            <motion.div 
+              className="w-full h-1/3 bg-primary glow-purple"
+              animate={{ y: ["-100%", "300%"] }}
+              transition={{ repeat: Infinity, duration: 3, ease: "linear" }}
+            />
+          </div>
+
           {/* Card 1 */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="flex flex-col items-center text-center space-y-6"
+            className="relative z-10 flex flex-col items-center text-center space-y-4"
           >
-            <h3 className="text-xl font-bold text-foreground">#1: Portfolio System</h3>
-            <div className="relative w-full aspect-video rounded-2xl overflow-hidden border border-border">
-              <Image src="/images/problem-graphic.png" alt="Portfolio" fill className="object-cover" />
+            <div className="w-24 h-24 rounded-full bg-background border border-primary/50 flex items-center justify-center shadow-[0_0_30px_rgba(139,92,246,0.3)] mb-4 relative overflow-hidden">
+              <div className="absolute inset-0 bg-primary/10 rounded-full" />
+              <DollarSign className="w-10 h-10 text-primary relative z-10" />
             </div>
-            <p className="text-muted-foreground text-sm leading-relaxed px-4">
-              Build a professional UGC portfolio to get <strong className="text-white font-semibold">personalized help</strong>. Everything from Marketing, Sales, and Strategy.
+            <h3 className="text-2xl font-bold text-white">#1 Money-Making System</h3>
+            <p className="text-muted-foreground text-base leading-relaxed px-4">
+              A proven system designed to make you over 5k/month in the first few weeks with our help.
             </p>
           </motion.div>
 
@@ -39,14 +59,15 @@ export function WhatYouGet() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="flex flex-col items-center text-center space-y-6"
+            className="relative z-10 flex flex-col items-center text-center space-y-4"
           >
-            <h3 className="text-xl font-bold text-foreground">#2: Outreach Framework</h3>
-            <div className="relative w-full aspect-video rounded-2xl overflow-hidden border border-border">
-              <Image src="/images/hero-video.png" alt="Framework" fill className="object-cover" />
+            <div className="w-24 h-24 rounded-full bg-background border border-primary/50 flex items-center justify-center shadow-[0_0_30px_rgba(139,92,246,0.3)] mb-4 relative overflow-hidden">
+              <div className="absolute inset-0 bg-primary/10 rounded-full" />
+              <MousePointerClick className="w-10 h-10 text-primary relative z-10" />
             </div>
-            <p className="text-muted-foreground text-sm leading-relaxed px-4">
-              We break down how we think, operate, and scale our <strong className="text-white font-semibold">outreach strategy</strong>. Showing you how to think like a high level CEO.
+            <h3 className="text-2xl font-bold text-white">#2 Direct leads</h3>
+            <p className="text-muted-foreground text-base leading-relaxed px-4">
+              We provide you a direct path to companies without having to search all over the internet.
             </p>
           </motion.div>
 
@@ -56,18 +77,18 @@ export function WhatYouGet() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="flex flex-col items-center text-center space-y-6"
+            className="relative z-10 flex flex-col items-center text-center space-y-4"
           >
-            <h3 className="text-xl font-bold text-foreground">#3: Tactical Next Steps</h3>
-            <div className="relative w-full aspect-video rounded-2xl overflow-hidden border border-border bg-surface-secondary/20">
-              <div className="absolute inset-0 bg-primary/10 flex items-center justify-center">
-                <span className="text-primary text-glow font-bold tracking-widest text-lg">1-ON-1 COACHING</span>
-              </div>
+            <div className="w-24 h-24 rounded-full bg-background border border-primary/50 flex items-center justify-center shadow-[0_0_30px_rgba(139,92,246,0.3)] mb-4 relative overflow-hidden">
+              <div className="absolute inset-0 bg-primary/10 rounded-full" />
+              <TrendingUp className="w-10 h-10 text-primary relative z-10" />
             </div>
-            <p className="text-muted-foreground text-sm leading-relaxed px-4">
-              Leave with clear - actionable - next steps to break past your current constraint. This includes a comprehensive <strong className="text-white font-semibold">scaling packet</strong>.
+            <h3 className="text-2xl font-bold text-white">#3 Scaling Framework</h3>
+            <p className="text-muted-foreground text-base leading-relaxed px-4">
+              Weekly Coaching calls, providing direct advice and future steps on scaling. As well as one-on-one assistance 24/7.
             </p>
           </motion.div>
+
         </div>
       </div>
     </section>

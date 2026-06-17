@@ -7,36 +7,36 @@ import { Star, MoreVertical } from "lucide-react"
 const testimonials = [
   {
     name: "Patrick Johnson",
-    meta: "7 reviews · 1 photo",
+    meta: "142 reviews · 12 photos",
     time: "2 weeks ago",
     highlight: "just a few hours into the first day I was completely sold",
     text: "My business partner convinced me we should attend this, so I wasn't sold. However, just a few hours into the first day I was completely sold. I started thinking about how we approach our business in a different way — especially from the CEO standpoint — looking to increase our overall revenue. It was incredible!",
   },
   {
     name: "Chase Taake",
-    meta: "5 reviews · 1 photo",
+    meta: "215 reviews · 18 photos",
     time: "3 weeks ago",
     highlight: "I have never had this much clarity",
     text: "Just got out of the scaling workshop... my new constraint is how fast I can implement their advice! Every question, plus questions I didn't know I had, were answered with care, in detail, with clarity. I have never had this much clarity. I truly loved this workshop.",
   },
   {
     name: "Franklin Cruz",
-    meta: "Local Guide · 23 reviews",
+    meta: "Local Guide · 328 reviews",
     time: "4 months ago",
     highlight: "the best I've ever attended",
     text: "As a military veteran, former Army recruiter, and someone who's been through countless trainings — I can confidently say this is the best I've ever attended. The level of depth, the frameworks, and the direct application to our business was unlike anything I've experienced.",
   },
 ]
 
-function ReviewCard({ name, meta, time, text, highlight, delay = 0 }: any) {
+function ReviewCard({ name, meta, time, text, highlight, delay = 0, rotateY = 0, z = 0, scale = 1, originClass = "origin-center" }: any) {
   const parts = text.split(highlight)
   return (
     <motion.div
-      initial={{ opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5, delay }}
-      className="glass-card rounded-2xl border border-border bg-[#0d0d0d] hover:border-primary/40 transition-all duration-300 p-6 flex flex-col gap-4 h-full"
+      initial={{ opacity: 0, y: 30, rotateY: 0, z: 0, scale: 0.95 }}
+      whileInView={{ opacity: 1, y: 0, rotateY, z, scale }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ duration: 0.8, delay, ease: "easeOut" }}
+      className={`glass-card rounded-2xl border border-border bg-[#0d0d0d] hover:border-primary/40 transition-colors duration-300 p-6 flex flex-col gap-4 h-full shadow-2xl ${originClass}`}
     >
       {/* Header */}
       <div className="flex justify-between items-start">
@@ -87,48 +87,49 @@ export function SocialProof() {
           </p>
         </div>
 
-        {/* Dynamic Bento Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
-          {/* Top Left: Review 1 */}
-          <div className="md:col-span-4 h-full">
-            <ReviewCard {...testimonials[0]} delay={0.1} />
-          </div>
+        {/* Top Reviews Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16" style={{ perspective: "2000px" }}>
+          <ReviewCard {...testimonials[0]} delay={0.1} rotateY={15} originClass="origin-right" />
+          <ReviewCard {...testimonials[1]} delay={0.2} rotateY={0} z={30} scale={1.05} originClass="origin-center" />
+          <ReviewCard {...testimonials[2]} delay={0.3} rotateY={-15} originClass="origin-left" />
+        </div>
 
-          {/* Top Right: Image 1 (Wide) */}
+        {/* Bottom Images with 3D Keystone Effect */}
+        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-8" style={{ perspective: "2000px" }}>
+          
+          {/* Left Image (Lower dollar) */}
           <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="md:col-span-8 h-full min-h-[250px] relative rounded-2xl overflow-hidden border border-border/40 hover:border-primary/40 transition-all duration-300 glass-card p-2"
+            initial={{ opacity: 0, rotateY: 0, y: 30, z: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, rotateY: 15, y: 0, z: 0, scale: 1 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+            className="relative rounded-2xl shadow-[0_0_50px_rgba(139,92,246,0.15)] origin-right"
           >
-            <div className="relative w-full h-full rounded-xl overflow-hidden">
-              <Image src="/images/proof-1.jpg" alt="Payment proof" fill className="object-cover" />
-            </div>
+            <img src="/images/proof-2.png" alt="Payment proof" className="w-full h-auto object-contain rounded-2xl" />
           </motion.div>
 
-          {/* Bottom Left: Image 2 (Tall) */}
+          {/* Middle Image (Highest dollar) */}
           <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="md:col-span-5 h-full min-h-[400px] relative rounded-2xl overflow-hidden border border-border/40 hover:border-primary/40 transition-all duration-300 glass-card p-2"
+            initial={{ opacity: 0, rotateY: 0, y: 30, z: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, rotateY: 0, y: 0, z: 30, scale: 1.05 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
+            className="relative rounded-2xl shadow-[0_0_50px_rgba(139,92,246,0.25)] origin-center z-10"
           >
-            <div className="relative w-full h-full rounded-xl overflow-hidden">
-              <Image src="/images/proof-multi.jpg" alt="Payment proofs" fill className="object-cover" />
-            </div>
+            <img src="/images/proof-3.png" alt="Payment proof high" className="w-full h-auto object-contain rounded-2xl" />
           </motion.div>
 
-          {/* Bottom Right: Reviews 2 & 3 */}
-          <div className="md:col-span-7 flex flex-col gap-6">
-            <div className="flex-1">
-              <ReviewCard {...testimonials[1]} delay={0.4} />
-            </div>
-            <div className="flex-1">
-              <ReviewCard {...testimonials[2]} delay={0.5} />
-            </div>
-          </div>
+          {/* Right Image (Multi) */}
+          <motion.div
+            initial={{ opacity: 0, rotateY: 0, y: 30, z: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, rotateY: -15, y: 0, z: 0, scale: 1 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+            className="relative rounded-2xl shadow-[0_0_50px_rgba(139,92,246,0.15)] origin-left"
+          >
+            <img src="/images/proof-1.png" alt="Payment proofs" className="w-full h-auto object-contain rounded-2xl" />
+          </motion.div>
+          
         </div>
 
       </div>
