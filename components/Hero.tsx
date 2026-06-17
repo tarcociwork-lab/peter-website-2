@@ -79,6 +79,7 @@ export function Hero() {
           <iframe 
             src="https://drive.google.com/file/d/1o3Hp5BBn9-K2PzH1xxii2c4ektShL8J4/preview" 
             allow="autoplay; fullscreen"
+            loading="lazy"
             className="w-full h-full rounded-[2rem] shadow-[0_0_50px_rgba(139,92,246,0.15)] border border-border/40"
             title="Mentorship Video"
           />

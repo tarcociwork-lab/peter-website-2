@@ -4,6 +4,10 @@ import { motion } from "framer-motion"
 import Image from "next/image"
 import { Star, MoreVertical } from "lucide-react"
 
+import proof1 from "../public/images/proof-1.png"
+import proof2 from "../public/images/proof-2.png"
+import proof3 from "../public/images/proof-3.png"
+
 const testimonials = [
   {
     name: "Patrick Johnson",
@@ -105,7 +109,7 @@ export function SocialProof() {
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
             className="relative rounded-2xl shadow-[0_0_50px_rgba(139,92,246,0.15)] origin-right"
           >
-            <img src="/images/proof-2.png" alt="Payment proof" className="w-full h-auto object-contain rounded-2xl" />
+            <Image src={proof2} alt="Payment proof" placeholder="blur" className="w-full h-auto object-contain rounded-2xl" />
           </motion.div>
 
           {/* Middle Image (Highest dollar) */}
@@ -116,7 +120,7 @@ export function SocialProof() {
             transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
             className="relative rounded-2xl shadow-[0_0_50px_rgba(139,92,246,0.25)] origin-center z-10"
           >
-            <img src="/images/proof-3.png" alt="Payment proof high" className="w-full h-auto object-contain rounded-2xl" />
+            <Image src={proof3} alt="Payment proof high" placeholder="blur" className="w-full h-auto object-contain rounded-2xl" />
           </motion.div>
 
           {/* Right Image (Multi) */}
@@ -127,7 +131,7 @@ export function SocialProof() {
             transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
             className="relative rounded-2xl shadow-[0_0_50px_rgba(139,92,246,0.15)] origin-left"
           >
-            <img src="/images/proof-1.png" alt="Payment proofs" className="w-full h-auto object-contain rounded-2xl" />
+            <Image src={proof1} alt="Payment proofs" placeholder="blur" className="w-full h-auto object-contain rounded-2xl" />
           </motion.div>
           
         </div>
